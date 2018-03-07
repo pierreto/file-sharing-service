@@ -1,0 +1,12 @@
+# .htaccess
+# author: Pierre Quang Linh To
+# Custom phpInfo
+# URL rewriting
+
+RewriteEngine On                                                   # Turn on the rewriting engine
+RewriteRule    ^[a-zA-Z0-9]{6}?$    download.php?code=$0    [L]    # Handle download requests (URL with short code)
+
+# Change these values if you want bigger files (upload/download)
+php_value memory_limit 500M
+php_value post_max_size 500M
+php_value upload_max_filesize 450M

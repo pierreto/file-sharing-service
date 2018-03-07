@@ -1,0 +1,297 @@
+/* style.css
+// author: Pierre Quang Linh To
+// Style for web application
+*/
+
+body {
+    font-family: Tahoma, Verdana, Geneva, sans-serif;
+    min-width: 700px;
+}
+
+.container {
+    width: 100%;
+    max-width: 680px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* HEADER */
+#header {
+    background-color: rgb(239, 239, 240);
+    color: rgb(123, 174, 231);
+    padding: 10px;
+}
+
+#dragDropFiles, #shareButton, #fileContainer, #progressBar {
+    display: none;
+}
+
+/* FILE INPUT */
+.box {
+    background-color: rgb(217, 225, 235);
+    position: relative;
+    padding: 60px 10px;
+}
+
+.box + .box {
+	margin-top: 2.5rem;
+}
+
+/* FILE INPUT STYLE FOR ALL BROWSERS */
+.box .box__dragndrop {
+    display: inline;
+}
+
+/* FILE INPUT STYLE FOR DRAG AND DROP COMPATIBLE BROWSERS */
+.box.has-advanced-upload {
+    background-color: rgb(217, 225, 235);
+    outline: dashed 3px rgb(123, 174, 231);
+    outline-offset: -10px;
+}
+
+.box.has-advanced-upload.is-dragover {
+    outline: dashed 3px rgb(217, 225, 235);
+    transition: background-color 1.0s linear;
+}
+  
+.box.has-advanced-upload.is-dragover:hover { 
+    background-color: rgb(170, 200, 233);
+}
+
+.box__file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.box__file + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+    color: rgb(64, 67, 70);
+}
+
+.box__file:focus + label,
+.box__file + label:hover {
+    background-color: rgb(188, 210, 235);
+}
+
+.box__file:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+.box__file:focus + label,
+.box__file.has-focus + label,
+.box__file + label:hover {
+    color: rgb(43, 45, 48);
+}
+
+.box__file + label figure {
+    width: 100px;
+    height: 135px;
+    background-color: rgb(123, 174, 231);
+    display: block;
+    position: relative;
+    padding: 30px;
+    margin: 0 auto 10px;
+}
+
+.box__file:focus + label figure,
+.box__file.has-focus + label figure,
+.box__file + label:hover figure {
+    background-color: rgb(54, 134, 224);
+}
+
+.box__file + label figure::before,
+.box__file + label figure::after {
+    width: 0;
+    height: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.box__file + label figure::before {
+    border-top: 20px solid #eaeff156;
+    border-left: 20px solid transparent;
+}
+
+.box__file + label figure::after {
+    border-bottom: 20px solid rgb(54, 134, 224);
+    border-right: 20px solid transparent;
+}
+
+.box__file:focus + label figure::after,
+.box__file.has-focus + label figure::after,
+.box__file + label:hover figure::after {
+    border-bottom-color: rgb(185, 211, 240);
+}
+
+.box__file + label svg {
+    width: 100%;
+    height: 100%;
+    fill: #f1e5e6;
+}
+
+.box.is-uploading .box__input {
+    visibility: none;
+}
+
+#blockContainer {
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* PROGRESS BAR */
+#progressBar { 
+    position: relative;
+    width: 676px;
+    border: 1px solid #ddd;
+    padding: 1px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.bar { 
+    background-color: rgb(140, 184, 226); 
+    width: 0%; 
+    height: 20px; 
+    border-radius: 5px; 
+}
+
+.percent { 
+    position: absolute; 
+    display: inline-block; 
+    top: 0.5px; 
+    left: 48%; 
+}
+
+/* DOWNLOAD URL */
+#urlContainer, #shareContainer {
+    display:inline;
+}
+
+#urlContainer {
+    float:left;
+    height: 40x;
+    width: 565px;
+    padding: 0px 4px 0px 4px;
+    background-color: rgb(185, 211, 240);
+    text-align: center;
+    display: none;
+}
+
+#shareCode {
+    font-size: 18px;
+    margin: 0px 10px 0px 10px;
+    line-height: 40px;
+}
+
+#urlContainer button {
+    float: right;
+    background-color: rgb(123, 174, 231);
+    height: 30px;
+    margin-top: 5px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin: -7px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 105%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* FILE SHARING */
+#shareContainer button {
+    float: right;
+    background-color: rgb(123, 174, 231);
+    font-size: 18px;
+    font-weight: bold;
+    width: 100px;
+    height: 40px;
+}
+
+#fileContainer h4 {
+    margin: 0px;
+}
+
+/* FILE LISTING */
+.table tr th {
+	border: rgb(123, 174, 231) 2px solid;
+	position: relative;
+	font-size: 16px;
+    text-transform: uppercase;
+}
+
+th, td {
+    padding: 5px 10px 5px 10px;
+}
+
+table tr td {	
+	border: #eee 1px solid;
+	color: #000;
+	position: relative;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+#fileName {
+    width: 320px;
+}
+
+#type {
+    width: 100px;
+}
+
+#size {
+    width: 100px;
+}
+
+#filesUploaded button {
+    border: rgb(240, 214, 214) 1px solid;
+}
